@@ -128,6 +128,180 @@
             display: block;
         }
 
+        .snake {
+            margin-top: 18px;
+            padding: 16px;
+            border-radius: 16px;
+            background: #ffffffb0;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .04);
+        }
+
+        .snake .meta {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            font-size: 13px;
+            opacity: .75;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .snake .layout {
+            display: grid;
+            gap: 16px;
+            align-items: start;
+        }
+
+        @media (min-width: 720px) {
+            .snake .layout {
+                grid-template-columns: minmax(0, 1fr) 200px;
+            }
+        }
+
+        .snake .board {
+            width: min(360px, 82vw);
+            aspect-ratio: 1 / 1;
+            background: #fff;
+            border-radius: 12px;
+            margin: 0 auto;
+            display: grid;
+            place-items: center;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, .08);
+        }
+
+        #snakeCanvas {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+        }
+
+        .snake .side {
+            display: grid;
+            gap: 12px;
+            justify-items: center;
+        }
+
+        .snake .keys {
+            width: 100%;
+            background: #ffffffcc;
+            border-radius: 12px;
+            padding: 10px;
+            font-size: 13px;
+            text-align: center;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .04);
+        }
+
+        .snake .stats {
+            width: 100%;
+            background: #ffffffcc;
+            border-radius: 12px;
+            padding: 10px;
+            font-size: 13px;
+            text-align: left;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .04);
+        }
+
+        .snake .title-card {
+            width: 100%;
+            background: #ffffffcc;
+            border-radius: 12px;
+            padding: 10px;
+            text-align: center;
+            font-weight: 800;
+            font-size: 16px;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .04);
+        }
+
+        .snake .stats .title {
+            font-weight: 800;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .snake .stats .row {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            margin: 4px 0;
+        }
+
+        .snake .keys .title {
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .snake .key-row {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin: 4px 0;
+            flex-wrap: wrap;
+        }
+
+        .snake .keycap {
+            background: #f3f4f6;
+            border-radius: 8px;
+            padding: 4px 8px;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        .snake .controls {
+            display: none;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            width: min(220px, 70vw);
+            margin: 0 auto;
+        }
+
+        .snake .controls button {
+            position: static;
+            transform: none;
+            padding: 10px 0;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 12px;
+            background: #f3f4f6;
+            color: #111827;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, .08);
+        }
+
+        @media (pointer: coarse) {
+            .snake .controls {
+                display: grid;
+            }
+        }
+
+        .snake .actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+
+        .snake .actions button {
+            position: static;
+            transform: none;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 800;
+            border-radius: 999px;
+            background: #111827;
+            color: #fff;
+        }
+
+        .snake .actions button.secondary {
+            background: #e5e7eb;
+            color: #111827;
+        }
+
+        .snake .status {
+            margin-top: 6px;
+            font-size: 13px;
+            opacity: .75;
+        }
+
         @keyframes pop {
             from {
                 transform: scale(.96);
@@ -146,42 +320,9 @@
     <canvas id="confettiCanvas"></canvas>
 
     <main class="card">
-        <!-- ANIMAL WITH HEART -->
-        <svg class="art" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <linearGradient id="fur" x1="0" x2="1">
-                    <stop offset="0" stop-color="#f7c7a1" />
-                    <stop offset="1" stop-color="#f2a97b" />
-                </linearGradient>
-                <linearGradient id="heart" x1="0" x2="1">
-                    <stop offset="0" stop-color="#ff4d7d" />
-                    <stop offset="1" stop-color="#ff1f68" />
-                </linearGradient>
-            </defs>
+        <img class="art" src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdXBuaG5ua3lyeW1vYzhqOGhpaHdiNnhnYnl2c3ByaDcydWx0YW1jdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ie4CIIvQS0bk3zwZlM/giphy.gif" alt="Valentine animation" />
 
-            <path d="M250 50 C250 33 270 25 282 38
-               C294 25 314 33 314 50
-               C314 78 282 92 282 106
-               C282 92 250 78 250 50Z" fill="url(#heart)" />
-
-            <path d="M90 120 C90 70 140 40 190 60
-               C240 40 290 70 290 120
-               C290 180 240 210 190 210
-               C140 210 90 180 90 120Z" fill="url(#fur)" />
-
-            <path d="M110 92 L95 55 L140 78 Z" fill="#f2a97b" />
-            <path d="M270 92 L285 55 L240 78 Z" fill="#f2a97b" />
-
-            <circle cx="160" cy="130" r="8" />
-            <circle cx="220" cy="130" r="8" />
-
-            <path d="M190 144 C186 144 182 148 182 152
-               C182 160 190 164 190 170
-               C190 164 198 160 198 152
-               C198 148 194 144 190 144Z" fill="#ff7aa2" />
-        </svg>
-
-        <h1>chloe will you be my valentine?</h1>
+        <h1>Mandy will you be my valentine?</h1>
 
         <section class="button-zone" id="zone">
             <button id="yesBtn">Yes</button>
@@ -192,8 +333,215 @@
         <div class="hint" id="hint">“No” seems a bit shy 😈</div>
 
         <section class="result" id="result">
-            <h2>YAY! 🎉</h2>
-            <img class="fireworks" src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif" alt="Fireworks" />
+            <img class="fireworks" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3E5cWdvcmZhejhoYWx5Z3FtMGI0dGl4amVrcmluczRkeG82N3hteiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IzXiddo2twMmdmU8Lv/giphy.gif" alt="Fireworks" />
+        </section>
+
+        <section class="snake" aria-label="Snake game">
+            <div class="layout">
+                <div class="board">
+                    <canvas id="snakeCanvas" width="360" height="360" aria-label="Snake board"></canvas>
+                </div>
+                <aside class="side" aria-label="Snake controls">
+                    <div class="title-card">Snake</div>
+                    <div class="stats">
+                        <div class="title">Game</div>
+                        <div class="row">
+                            <span>Score</span>
+                            <strong id="snakeScore">0</strong>
+                        </div>
+                        <div class="row">
+                            <span>High</span>
+                            <strong id="snakeHigh">0</strong>
+                        </div>
+                        <div class="row">
+                            <span>Tick</span>
+                            <strong id="snakeTick">0</strong>
+                        </div>
+                    </div>
+                    <div class="keys">
+                        <div class="title">Keyboard</div>
+                        <div class="key-row">
+                            <span class="keycap">↑</span>
+                            <span class="keycap">←</span>
+                            <span class="keycap">↓</span>
+                            <span class="keycap">→</span>
+                        </div>
+                        <div class="key-row">
+                            <span class="keycap">Space = Pause</span>
+                            <span class="keycap">R = Restart</span>
+                        </div>
+                    </div>
+                    <div class="controls" aria-hidden="true">
+                        <span></span>
+                        <button data-dir="up">Up</button>
+                        <span></span>
+                        <button data-dir="left">Left</button>
+                        <button data-dir="down">Down</button>
+                        <button data-dir="right">Right</button>
+                    </div>
+                </aside>
+            </div>
+            <div class="actions">
+                <button id="snakePause" class="secondary">Pause</button>
+                <button id="snakeRestart">Restart</button>
+            </div>
+            <div class="status" id="snakeStatus">Use arrow keys or WASD.</div>
+        </section>
+
+        <section class="snake" aria-label="Snake game">
+            <div class="layout">
+                <div class="board">
+                    <canvas id="snakeCanvas" width="360" height="360" aria-label="Snake board"></canvas>
+                </div>
+                <aside class="side" aria-label="Snake controls">
+                    <div class="title-card">Snake</div>
+                    <div class="stats">
+                        <div class="title">Game</div>
+                        <div class="row">
+                            <span>Score</span>
+                            <strong id="snakeScore">0</strong>
+                        </div>
+                        <div class="row">
+                            <span>High</span>
+                            <strong id="snakeHigh">0</strong>
+                        </div>
+                        <div class="row">
+                            <span>Tick</span>
+                            <strong id="snakeTick">0</strong>
+                        </div>
+                    </div>
+                    <div class="keys">
+                        <div class="title">Keyboard</div>
+                        <div class="key-row">
+                            <span class="keycap">↑</span>
+                            <span class="keycap">←</span>
+                            <span class="keycap">↓</span>
+                            <span class="keycap">→</span>
+                        </div>
+                        <div class="key-row">
+                            <span class="keycap">Space = Pause</span>
+                            <span class="keycap">R = Restart</span>
+                        </div>
+                    </div>
+                    <div class="controls" aria-hidden="true">
+                        <span></span>
+                        <button data-dir="up">Up</button>
+                        <span></span>
+                        <button data-dir="left">Left</button>
+                        <button data-dir="down">Down</button>
+                        <button data-dir="right">Right</button>
+                    </div>
+                </aside>
+            </div>
+            <div class="actions">
+                <button id="snakePause" class="secondary">Pause</button>
+                <button id="snakeRestart">Restart</button>
+            </div>
+            <div class="status" id="snakeStatus">Use arrow keys or WASD.</div>
+        </section>
+
+        <section class="snake" aria-label="Snake game">
+            <div class="layout">
+                <div class="board">
+                    <canvas id="snakeCanvas" width="360" height="360" aria-label="Snake board"></canvas>
+                </div>
+                <aside class="side" aria-label="Snake controls">
+                    <div class="title-card">Snake</div>
+                    <div class="stats">
+                        <div class="title">Game</div>
+                        <div class="row">
+                            <span>Score</span>
+                            <strong id="snakeScore">0</strong>
+                        </div>
+                        <div class="row">
+                            <span>High</span>
+                            <strong id="snakeHigh">0</strong>
+                        </div>
+                        <div class="row">
+                            <span>Tick</span>
+                            <strong id="snakeTick">0</strong>
+                        </div>
+                    </div>
+                    <div class="keys">
+                        <div class="title">Keyboard</div>
+                        <div class="key-row">
+                            <span class="keycap">↑</span>
+                            <span class="keycap">←</span>
+                            <span class="keycap">↓</span>
+                            <span class="keycap">→</span>
+                        </div>
+                        <div class="key-row">
+                            <span class="keycap">Space = Pause</span>
+                            <span class="keycap">R = Restart</span>
+                        </div>
+                    </div>
+                    <div class="controls" aria-hidden="true">
+                        <span></span>
+                        <button data-dir="up">Up</button>
+                        <span></span>
+                        <button data-dir="left">Left</button>
+                        <button data-dir="down">Down</button>
+                        <button data-dir="right">Right</button>
+                    </div>
+                </aside>
+            </div>
+            <div class="actions">
+                <button id="snakePause" class="secondary">Pause</button>
+                <button id="snakeRestart">Restart</button>
+            </div>
+            <div class="status" id="snakeStatus">Use arrow keys or WASD.</div>
+        </section>
+
+        <section class="snake" aria-label="Snake game">
+            <div class="layout">
+                <div class="board">
+                    <canvas id="snakeCanvas" width="360" height="360" aria-label="Snake board"></canvas>
+                </div>
+                <aside class="side" aria-label="Snake controls">
+                    <div class="title-card">Snake</div>
+                    <div class="stats">
+                        <div class="title">Game</div>
+                        <div class="row">
+                            <span>Score</span>
+                            <strong id="snakeScore">0</strong>
+                        </div>
+                        <div class="row">
+                            <span>High</span>
+                            <strong id="snakeHigh">0</strong>
+                        </div>
+                        <div class="row">
+                            <span>Tick</span>
+                            <strong id="snakeTick">0</strong>
+                        </div>
+                    </div>
+                    <div class="keys">
+                        <div class="title">Keyboard</div>
+                        <div class="key-row">
+                            <span class="keycap">↑</span>
+                            <span class="keycap">←</span>
+                            <span class="keycap">↓</span>
+                            <span class="keycap">→</span>
+                        </div>
+                        <div class="key-row">
+                            <span class="keycap">Space = Pause</span>
+                            <span class="keycap">R = Restart</span>
+                        </div>
+                    </div>
+                    <div class="controls" aria-hidden="true">
+                        <span></span>
+                        <button data-dir="up">Up</button>
+                        <span></span>
+                        <button data-dir="left">Left</button>
+                        <button data-dir="down">Down</button>
+                        <button data-dir="right">Right</button>
+                    </div>
+                </aside>
+            </div>
+            <div class="actions">
+                <button id="snakePause" class="secondary">Pause</button>
+                <button id="snakeRestart">Restart</button>
+            </div>
+            <div class="status" id="snakeStatus">Use arrow keys or WASD.</div>
         </section>
     </main>
 
@@ -203,6 +551,8 @@
         const noBtn = document.getElementById("noBtn");
         const result = document.getElementById("result");
         const hint = document.getElementById("hint");
+        const titleEl = document.querySelector("h1");
+        const snakeSection = document.querySelector(".snake");
 
         /* ---------- CONFETTI (FIXED FULL SCREEN) ---------- */
         const confettiCanvas = document.getElementById("confettiCanvas");
@@ -300,9 +650,264 @@
             zone.style.display = "none";
             hint.style.display = "none";     // HIDE THE HINT
             result.style.display = "block";
+            if (snakeSection) snakeSection.style.display = "none";
+            if (titleEl) titleEl.textContent = "I knew it 😏!";
             resizeConfettiCanvas();
             fullScreenConfetti();
         });
+
+        /* ---------- SNAKE GAME ---------- */
+        const GRID_SIZE = 16;
+        const TICK_MS = 140;
+        const board = document.getElementById("snakeCanvas");
+        const scoreEl = document.getElementById("snakeScore");
+        const highEl = document.getElementById("snakeHigh");
+        const tickEl = document.getElementById("snakeTick");
+        const statusEl = document.getElementById("snakeStatus");
+        const pauseBtn = document.getElementById("snakePause");
+        const restartBtn = document.getElementById("snakeRestart");
+        const controlButtons = document.querySelectorAll(".snake .controls button");
+        const boardWrapper = document.querySelector(".snake .board");
+
+        const ctx = board.getContext("2d");
+        let tickHandle = null;
+        let paused = false;
+        let highScore = 0;
+
+        const SnakeCore = (() => {
+            function randInt(max, rng) {
+                return Math.floor(rng() * max);
+            }
+
+            function spawnFood(snake, size, rng) {
+                const occupied = new Set(snake.map(p => `${p.x},${p.y}`));
+                const empty = [];
+                for (let y = 0; y < size; y++) {
+                    for (let x = 0; x < size; x++) {
+                        const key = `${x},${y}`;
+                        if (!occupied.has(key)) empty.push({ x, y });
+                    }
+                }
+                if (empty.length === 0) return null;
+                return empty[randInt(empty.length, rng)];
+            }
+
+            function createInitialState(size, rng) {
+                const start = { x: Math.floor(size / 2), y: Math.floor(size / 2) };
+                const snake = [start, { x: start.x - 1, y: start.y }, { x: start.x - 2, y: start.y }];
+                return {
+                    snake,
+                    dir: { x: 1, y: 0 },
+                    nextDir: { x: 1, y: 0 },
+                    food: spawnFood(snake, size, rng),
+                    score: 0,
+                    ticks: 0,
+                    over: false
+                };
+            }
+
+            function isReverse(a, b) {
+                return a.x === -b.x && a.y === -b.y;
+            }
+
+            function step(state, size, rng) {
+                if (state.over) return state;
+                const dir = isReverse(state.nextDir, state.dir) ? state.dir : state.nextDir;
+                const head = state.snake[0];
+                const next = { x: head.x + dir.x, y: head.y + dir.y };
+
+                if (next.x < 0 || next.x >= size || next.y < 0 || next.y >= size) {
+                    return { ...state, dir, ticks: state.ticks + 1, over: true };
+                }
+
+                const hitsSelf = state.snake.some((p, idx) => idx !== 0 && p.x === next.x && p.y === next.y);
+                if (hitsSelf) return { ...state, dir, ticks: state.ticks + 1, over: true };
+
+                const ate = state.food && next.x === state.food.x && next.y === state.food.y;
+                const newSnake = [next, ...state.snake];
+                if (!ate) newSnake.pop();
+
+                const newFood = ate ? spawnFood(newSnake, size, rng) : state.food;
+                return {
+                    ...state,
+                    dir,
+                    snake: newSnake,
+                    food: newFood,
+                    score: state.score + (ate ? 1 : 0),
+                    ticks: state.ticks + 1,
+                    over: newFood === null ? true : false
+                };
+            }
+
+            return { createInitialState, step };
+        })();
+
+        let gameState = SnakeCore.createInitialState(GRID_SIZE, Math.random);
+
+        function resizeBoard() {
+            const size = Math.floor(boardWrapper.clientWidth || 360);
+            const dpr = Math.max(1, window.devicePixelRatio || 1);
+            board.width = Math.floor(size * dpr);
+            board.height = Math.floor(size * dpr);
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            draw();
+        }
+
+        function draw() {
+            const size = boardWrapper.clientWidth || 360;
+            const cell = size / GRID_SIZE;
+            ctx.clearRect(0, 0, size, size);
+
+            ctx.fillStyle = "#f8fafc";
+            ctx.fillRect(0, 0, size, size);
+
+            ctx.strokeStyle = "rgba(0,0,0,0.05)";
+            for (let i = 0; i <= GRID_SIZE; i++) {
+                ctx.beginPath();
+                ctx.moveTo(i * cell, 0);
+                ctx.lineTo(i * cell, size);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(0, i * cell);
+                ctx.lineTo(size, i * cell);
+                ctx.stroke();
+            }
+
+            if (gameState.food) {
+                ctx.fillStyle = "#ff3b7a";
+                ctx.beginPath();
+                ctx.roundRect(
+                    gameState.food.x * cell + 2,
+                    gameState.food.y * cell + 2,
+                    cell - 4,
+                    cell - 4,
+                    6
+                );
+                ctx.fill();
+            }
+
+            ctx.fillStyle = "#111827";
+            gameState.snake.forEach((p, i) => {
+                const inset = i === 0 ? 1 : 3;
+                ctx.beginPath();
+                ctx.roundRect(
+                    p.x * cell + inset,
+                    p.y * cell + inset,
+                    cell - inset * 2,
+                    cell - inset * 2,
+                    6
+                );
+                ctx.fill();
+            });
+        }
+
+        function updateScore() {
+            scoreEl.textContent = gameState.score;
+            if (gameState.score > highScore) highScore = gameState.score;
+            highEl.textContent = highScore;
+            tickEl.textContent = gameState.ticks;
+        }
+
+        function setStatus() {
+            if (gameState.over) {
+                statusEl.textContent = "Game over. Press Restart.";
+            } else if (paused) {
+                statusEl.textContent = "Paused. Press Pause or Space to resume.";
+            } else {
+                statusEl.textContent = "Use keyboard controls on the right (or touch buttons on mobile).";
+            }
+        }
+
+        function tick() {
+            if (paused || gameState.over) return;
+            gameState = SnakeCore.step(gameState, GRID_SIZE, Math.random);
+            updateScore();
+            draw();
+            setStatus();
+        }
+
+        function startLoop() {
+            if (tickHandle) clearInterval(tickHandle);
+            tickHandle = setInterval(tick, TICK_MS);
+        }
+
+        function restart() {
+            gameState = SnakeCore.createInitialState(GRID_SIZE, Math.random);
+            paused = false;
+            updateScore();
+            draw();
+            setStatus();
+        }
+
+        function setDirection(dir) {
+            gameState = { ...gameState, nextDir: dir };
+        }
+
+        const directionMap = {
+            ArrowUp: { x: 0, y: -1 },
+            ArrowDown: { x: 0, y: 1 },
+            ArrowLeft: { x: -1, y: 0 },
+            ArrowRight: { x: 1, y: 0 }
+        };
+
+        window.addEventListener("keydown", e => {
+            if (e.key === " " || e.code === "Space") {
+                paused = !paused;
+                setStatus();
+                return;
+            }
+            if (e.key === "r" || e.key === "R") {
+                restart();
+                return;
+            }
+            const dir = directionMap[e.key];
+            if (dir) {
+                e.preventDefault();
+                setDirection(dir);
+            }
+        });
+
+        controlButtons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const dirKey = btn.dataset.dir;
+                const map = {
+                    up: { x: 0, y: -1 },
+                    down: { x: 0, y: 1 },
+                    left: { x: -1, y: 0 },
+                    right: { x: 1, y: 0 }
+                };
+                setDirection(map[dirKey]);
+            });
+        });
+
+        pauseBtn.addEventListener("click", () => {
+            paused = !paused;
+            setStatus();
+        });
+
+        restartBtn.addEventListener("click", () => {
+            restart();
+        });
+
+        if (!CanvasRenderingContext2D.prototype.roundRect) {
+            CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
+                const radius = Math.min(r, w / 2, h / 2);
+                this.beginPath();
+                this.moveTo(x + radius, y);
+                this.arcTo(x + w, y, x + w, y + h, radius);
+                this.arcTo(x + w, y + h, x, y + h, radius);
+                this.arcTo(x, y + h, x, y, radius);
+                this.arcTo(x, y, x + w, y, radius);
+                this.closePath();
+                return this;
+            };
+        }
+
+        const resizeObserver = new ResizeObserver(resizeBoard);
+        resizeObserver.observe(boardWrapper);
+        window.addEventListener("resize", resizeBoard);
+        restart();
+        startLoop();
     </script>
 </body>
 
