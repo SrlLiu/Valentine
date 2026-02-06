@@ -25,12 +25,14 @@
         body {
             margin: 0;
             min-height: 100svh;
-            display: grid;
-            place-items: center;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
             background: radial-gradient(circle at top, var(--bg2), var(--bg1));
             font-family: system-ui, sans-serif;
-            overflow: hidden;
-            padding: 16px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding: clamp(0.75rem, 3vw, 1.5rem);
         }
 
         /* FULL-SCREEN CONFETTI CANVAS */
@@ -44,31 +46,32 @@
         }
 
         .card {
-            width: min(720px, 92vw);
-            padding: 26px 22px;
+            width: min(48rem, 96vw);
+            padding: clamp(1rem, 3vw, 1.75rem);
             background: var(--card);
             backdrop-filter: blur(10px);
-            border-radius: 22px;
+            border-radius: clamp(1rem, 2vw, 1.375rem);
             text-align: center;
             box-shadow: 0 18px 60px rgba(0, 0, 0, .15);
+            margin: clamp(0.5rem, 2vw, 1rem) 0 clamp(1rem, 4vw, 2rem);
         }
 
         .art {
-            width: min(260px, 80vw);
-            margin: 0 auto 10px;
+            width: clamp(8rem, 40vw, 16rem);
+            margin: 0 auto clamp(0.5rem, 2vw, 0.75rem);
             display: block;
             filter: drop-shadow(0 10px 14px rgba(0, 0, 0, .12));
         }
 
         h1 {
-            font-size: clamp(26px, 4vw, 44px);
-            margin: 12px 0 18px;
+            font-size: clamp(1.4rem, 4vw, 2.75rem);
+            margin: clamp(0.5rem, 2vw, 0.75rem) 0 clamp(0.75rem, 2.5vw, 1.125rem);
         }
 
         .button-zone {
             position: relative;
-            width: min(520px, 92%);
-            height: 150px;
+            width: min(32rem, 94%);
+            height: clamp(7.5rem, 20vw, 10rem);
             margin: 0 auto;
             touch-action: none;
         }
@@ -77,8 +80,8 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            padding: 16px 24px;
-            font-size: 18px;
+            padding: clamp(0.75rem, 2.8vw, 1rem) clamp(1rem, 3vw, 1.5rem);
+            font-size: clamp(0.95rem, 2.2vw, 1.125rem);
             font-weight: 800;
             border-radius: 999px;
             border: none;
@@ -87,6 +90,8 @@
             user-select: none;
             -webkit-tap-highlight-color: transparent;
             transition: transform .12s ease, background .12s ease;
+            min-height: 2.75rem;
+            min-width: 2.75rem;
         }
 
         #yesBtn {
@@ -95,8 +100,10 @@
             color: #fff;
         }
 
-        #yesBtn:hover {
-            background: var(--yesHover);
+        @media (hover: hover) and (pointer: fine) {
+            #yesBtn:hover {
+                background: var(--yesHover);
+            }
         }
 
         #noBtn {
@@ -106,32 +113,32 @@
         }
 
         .hint {
-            margin-top: 10px;
-            font-size: 13px;
+            margin-top: clamp(0.5rem, 1.5vw, 0.75rem);
+            font-size: clamp(0.75rem, 2vw, 0.8125rem);
             opacity: .7;
         }
 
         .result {
             display: none;
-            margin-top: 18px;
+            margin-top: clamp(0.75rem, 2.5vw, 1.125rem);
             animation: pop .35s ease;
         }
 
         .result h2 {
-            font-size: clamp(30px, 4.5vw, 46px);
-            margin: 10px 0;
+            font-size: clamp(1.6rem, 4.5vw, 2.875rem);
+            margin: clamp(0.5rem, 1.8vw, 0.75rem) 0;
         }
 
         .fireworks {
-            width: min(380px, 90vw);
+            width: clamp(12rem, 60vw, 24rem);
             margin: 0 auto;
             display: block;
         }
 
         .snake {
-            margin-top: 18px;
-            padding: 16px;
-            border-radius: 16px;
+            margin-top: clamp(0.75rem, 2.5vw, 1.125rem);
+            padding: clamp(0.75rem, 2.5vw, 1rem);
+            border-radius: clamp(0.75rem, 2vw, 1rem);
             background: #ffffffb0;
             box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .04);
         }
@@ -139,30 +146,30 @@
         .snake .meta {
             display: flex;
             justify-content: center;
-            gap: 14px;
-            font-size: 13px;
+            gap: clamp(0.5rem, 2vw, 0.875rem);
+            font-size: clamp(0.75rem, 2vw, 0.8125rem);
             opacity: .75;
-            margin-bottom: 8px;
+            margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
             flex-wrap: wrap;
         }
 
         .snake .layout {
             display: grid;
-            gap: 16px;
+            gap: clamp(0.75rem, 2.5vw, 1rem);
             align-items: start;
         }
 
-        @media (min-width: 720px) {
+        @media (min-width: 40rem) {
             .snake .layout {
-                grid-template-columns: minmax(0, 1fr) 200px;
+                grid-template-columns: minmax(0, 1fr) minmax(10rem, 14rem);
             }
         }
 
         .snake .board {
-            width: min(360px, 82vw);
+            width: clamp(14rem, 70vw, 22rem);
             aspect-ratio: 1 / 1;
             background: #fff;
-            border-radius: 12px;
+            border-radius: clamp(0.5rem, 1.5vw, 0.75rem);
             margin: 0 auto;
             display: grid;
             place-items: center;
@@ -177,16 +184,16 @@
 
         .snake .side {
             display: grid;
-            gap: 12px;
+            gap: clamp(0.5rem, 2vw, 0.75rem);
             justify-items: center;
         }
 
         .snake .keys {
             width: 100%;
             background: #ffffffcc;
-            border-radius: 12px;
-            padding: 10px;
-            font-size: 13px;
+            border-radius: clamp(0.5rem, 1.5vw, 0.75rem);
+            padding: clamp(0.5rem, 1.5vw, 0.625rem);
+            font-size: clamp(0.75rem, 2vw, 0.8125rem);
             text-align: center;
             box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .04);
         }
@@ -194,9 +201,9 @@
         .snake .stats {
             width: 100%;
             background: #ffffffcc;
-            border-radius: 12px;
-            padding: 10px;
-            font-size: 13px;
+            border-radius: clamp(0.5rem, 1.5vw, 0.75rem);
+            padding: clamp(0.5rem, 1.5vw, 0.625rem);
+            font-size: clamp(0.75rem, 2vw, 0.8125rem);
             text-align: left;
             box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .04);
         }
@@ -204,11 +211,11 @@
         .snake .title-card {
             width: 100%;
             background: #ffffffcc;
-            border-radius: 12px;
-            padding: 10px;
+            border-radius: clamp(0.5rem, 1.5vw, 0.75rem);
+            padding: clamp(0.5rem, 1.5vw, 0.625rem);
             text-align: center;
             font-weight: 800;
-            font-size: 16px;
+            font-size: clamp(0.9rem, 2.2vw, 1rem);
             box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .04);
         }
 
@@ -241,29 +248,30 @@
         .snake .keycap {
             background: #f3f4f6;
             border-radius: 8px;
-            padding: 4px 8px;
+            padding: 0.25rem 0.5rem;
             font-weight: 700;
-            font-size: 12px;
+            font-size: clamp(0.7rem, 1.8vw, 0.75rem);
         }
 
         .snake .controls {
             display: none;
             grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            width: min(220px, 70vw);
+            gap: clamp(0.5rem, 2vw, 0.75rem);
+            width: min(14rem, 70vw);
             margin: 0 auto;
         }
 
         .snake .controls button {
             position: static;
             transform: none;
-            padding: 10px 0;
-            font-size: 14px;
+            padding: 0.75rem 0;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
             font-weight: 700;
-            border-radius: 12px;
+            border-radius: clamp(0.5rem, 1.5vw, 0.75rem);
             background: #f3f4f6;
             color: #111827;
             box-shadow: 0 6px 14px rgba(0, 0, 0, .08);
+            min-height: 2.75rem;
         }
 
         @media (pointer: coarse) {
@@ -275,20 +283,21 @@
         .snake .actions {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-top: 8px;
+            gap: clamp(0.5rem, 2vw, 0.75rem);
+            margin-top: clamp(0.5rem, 1.5vw, 0.75rem);
             flex-wrap: wrap;
         }
 
         .snake .actions button {
             position: static;
             transform: none;
-            padding: 10px 16px;
-            font-size: 14px;
+            padding: 0.65rem 1rem;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
             font-weight: 800;
             border-radius: 999px;
             background: #111827;
             color: #fff;
+            min-height: 2.75rem;
         }
 
         .snake .actions button.secondary {
@@ -297,9 +306,19 @@
         }
 
         .snake .status {
-            margin-top: 6px;
-            font-size: 13px;
+            margin-top: clamp(0.35rem, 1.2vw, 0.5rem);
+            font-size: clamp(0.75rem, 2vw, 0.8125rem);
             opacity: .75;
+        }
+
+        @media (min-width: 64rem) {
+            .card {
+                width: min(56rem, 94vw);
+            }
+
+            .snake .layout {
+                grid-template-columns: minmax(0, 1fr) minmax(12rem, 16rem);
+            }
         }
 
         @keyframes pop {
@@ -385,163 +404,7 @@
                 <button id="snakePause" class="secondary">Pause</button>
                 <button id="snakeRestart">Restart</button>
             </div>
-            <div class="status" id="snakeStatus">Use arrow keys or WASD.</div>
-        </section>
-
-        <section class="snake" aria-label="Snake game">
-            <div class="layout">
-                <div class="board">
-                    <canvas id="snakeCanvas" width="360" height="360" aria-label="Snake board"></canvas>
-                </div>
-                <aside class="side" aria-label="Snake controls">
-                    <div class="title-card">Snake</div>
-                    <div class="stats">
-                        <div class="title">Game</div>
-                        <div class="row">
-                            <span>Score</span>
-                            <strong id="snakeScore">0</strong>
-                        </div>
-                        <div class="row">
-                            <span>High</span>
-                            <strong id="snakeHigh">0</strong>
-                        </div>
-                        <div class="row">
-                            <span>Tick</span>
-                            <strong id="snakeTick">0</strong>
-                        </div>
-                    </div>
-                    <div class="keys">
-                        <div class="title">Keyboard</div>
-                        <div class="key-row">
-                            <span class="keycap">↑</span>
-                            <span class="keycap">←</span>
-                            <span class="keycap">↓</span>
-                            <span class="keycap">→</span>
-                        </div>
-                        <div class="key-row">
-                            <span class="keycap">Space = Pause</span>
-                            <span class="keycap">R = Restart</span>
-                        </div>
-                    </div>
-                    <div class="controls" aria-hidden="true">
-                        <span></span>
-                        <button data-dir="up">Up</button>
-                        <span></span>
-                        <button data-dir="left">Left</button>
-                        <button data-dir="down">Down</button>
-                        <button data-dir="right">Right</button>
-                    </div>
-                </aside>
-            </div>
-            <div class="actions">
-                <button id="snakePause" class="secondary">Pause</button>
-                <button id="snakeRestart">Restart</button>
-            </div>
-            <div class="status" id="snakeStatus">Use arrow keys or WASD.</div>
-        </section>
-
-        <section class="snake" aria-label="Snake game">
-            <div class="layout">
-                <div class="board">
-                    <canvas id="snakeCanvas" width="360" height="360" aria-label="Snake board"></canvas>
-                </div>
-                <aside class="side" aria-label="Snake controls">
-                    <div class="title-card">Snake</div>
-                    <div class="stats">
-                        <div class="title">Game</div>
-                        <div class="row">
-                            <span>Score</span>
-                            <strong id="snakeScore">0</strong>
-                        </div>
-                        <div class="row">
-                            <span>High</span>
-                            <strong id="snakeHigh">0</strong>
-                        </div>
-                        <div class="row">
-                            <span>Tick</span>
-                            <strong id="snakeTick">0</strong>
-                        </div>
-                    </div>
-                    <div class="keys">
-                        <div class="title">Keyboard</div>
-                        <div class="key-row">
-                            <span class="keycap">↑</span>
-                            <span class="keycap">←</span>
-                            <span class="keycap">↓</span>
-                            <span class="keycap">→</span>
-                        </div>
-                        <div class="key-row">
-                            <span class="keycap">Space = Pause</span>
-                            <span class="keycap">R = Restart</span>
-                        </div>
-                    </div>
-                    <div class="controls" aria-hidden="true">
-                        <span></span>
-                        <button data-dir="up">Up</button>
-                        <span></span>
-                        <button data-dir="left">Left</button>
-                        <button data-dir="down">Down</button>
-                        <button data-dir="right">Right</button>
-                    </div>
-                </aside>
-            </div>
-            <div class="actions">
-                <button id="snakePause" class="secondary">Pause</button>
-                <button id="snakeRestart">Restart</button>
-            </div>
-            <div class="status" id="snakeStatus">Use arrow keys or WASD.</div>
-        </section>
-
-        <section class="snake" aria-label="Snake game">
-            <div class="layout">
-                <div class="board">
-                    <canvas id="snakeCanvas" width="360" height="360" aria-label="Snake board"></canvas>
-                </div>
-                <aside class="side" aria-label="Snake controls">
-                    <div class="title-card">Snake</div>
-                    <div class="stats">
-                        <div class="title">Game</div>
-                        <div class="row">
-                            <span>Score</span>
-                            <strong id="snakeScore">0</strong>
-                        </div>
-                        <div class="row">
-                            <span>High</span>
-                            <strong id="snakeHigh">0</strong>
-                        </div>
-                        <div class="row">
-                            <span>Tick</span>
-                            <strong id="snakeTick">0</strong>
-                        </div>
-                    </div>
-                    <div class="keys">
-                        <div class="title">Keyboard</div>
-                        <div class="key-row">
-                            <span class="keycap">↑</span>
-                            <span class="keycap">←</span>
-                            <span class="keycap">↓</span>
-                            <span class="keycap">→</span>
-                        </div>
-                        <div class="key-row">
-                            <span class="keycap">Space = Pause</span>
-                            <span class="keycap">R = Restart</span>
-                        </div>
-                    </div>
-                    <div class="controls" aria-hidden="true">
-                        <span></span>
-                        <button data-dir="up">Up</button>
-                        <span></span>
-                        <button data-dir="left">Left</button>
-                        <button data-dir="down">Down</button>
-                        <button data-dir="right">Right</button>
-                    </div>
-                </aside>
-            </div>
-            <div class="actions">
-                <button id="snakePause" class="secondary">Pause</button>
-                <button id="snakeRestart">Restart</button>
-            </div>
-            <div class="status" id="snakeStatus">Use arrow keys or WASD.</div>
+            <div class="status" id="snakeStatus">Use arrow keys (or touch buttons on mobile).</div>
         </section>
     </main>
 
